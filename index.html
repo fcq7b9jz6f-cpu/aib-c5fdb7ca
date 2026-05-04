@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <title>أم كلثوم - كوكب الشرق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a0505;
+            --secondary-color: #a32222;
+            --accent-color: #d4af37;
+            --text-light: #f4f4f4;
+            --text-dark: #333;
+            --bg-light: #ffffff;
+            --bg-dark-gradient: linear-gradient(135deg, #4b0000 0%, #6a0505 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: var(--bg-dark-gradient);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        nav {
+            background: var(--secondary-color);
+            padding: 0.8rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .bio-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .bio-content img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .bio-content img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .bio-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            text-align: justify;
+            max-width: 800px;
+        }
+
+        .songs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .song-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 1.2rem;
+            border: 1px solid #eee;
+        }
+
+        .song-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .song-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .song-card audio {
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        footer {
+            background: var(--bg-dark-gradient);
+            color: var(--text-light);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 0.8rem;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .section {
+                padding: 1.8rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .bio-content img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .bio-content p {
+                font-size: 1rem;
+            }
+
+            .songs-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 0.5rem 0;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .bio-content img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>أم كلثوم</h1>
+        <p>كوكب الشرق وسيدة الغناء العربي</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#bio">السيرة الذاتية</a></li>
+            <li><a href="#songs">أشهر الأغاني</a></li>
+            <li><a href="#gallery">معرض الصور</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="bio" class="section">
+            <h2>السيرة الذاتية</h2>
+            <div class="bio-content">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Om_Kalthoum_%281940s%29.jpg/800px-Om_Kalthoum_%281940s%29.jpg" alt="صورة أم كلثوم">
+                <p>
+                    ولدت فاطمة إبراهيم السيد البلتاجي، المعروفة فنياً بأم كلثوم، في 4 مايو 1904 (أو 31 ديسمبر 1898 حسب مصادر أخرى) بقرية طماي الزهايرة، محافظة الدقهلية، مصر. تعد أم كلثوم واحدة من أبرز عمالقة الغناء العربي، ولقبت بـ 
